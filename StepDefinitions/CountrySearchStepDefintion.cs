@@ -16,12 +16,14 @@ namespace PlantHealth.StepDefinitions
         private IWebDriver driver;
         private CountryPage _countryPage;
         private ErrorPage _errorPage;
+        private FormatSelectionPage _formatSelectionPage;
 
-        public CountrySearchStepDefinition(IWebDriver driver, ErrorPage errorPage,CountryPage countryPage)
+        public CountrySearchStepDefinition(IWebDriver driver, ErrorPage errorPage,CountryPage countryPage,FormatSelectionPage formatSelection)
         {
             this.driver = driver;            
             _errorPage = errorPage;
             _countryPage = countryPage; 
+            _formatSelectionPage = formatSelection;
         }
 
         [Given(@"I am on the Country search page")]
@@ -30,16 +32,16 @@ namespace PlantHealth.StepDefinitions
             driver.Url = countryPage;
         }
 
-        [When(@"I enter the country name ""([^""]*)"" in the search box")]
-        public void WhenIEnterTheCountryNameInTheSearchBox(string india)
+        [When(@"I search for a country ""([^""]*)""")]
+        public void WhenISearchForACountry(string countryName)
         {
-            _countryPage.enterCountryName(india);
+            _countryPage.enterCountryName(countryName);
         }
 
-        [When(@"I select an matching entry ""([^""]*)"" from the drop down")]
-        public void WhenISelectAnMatchingEntryFromTheDropDown(string india)
+        [When(@"I select a country from the list ""([^""]*)""")]
+        public void WhenISelectACountryFromTheList(string countryName)
         {
-            _countryPage.selectACountry(india);
+            _countryPage.selectACountry(countryName);
         }
 
         [When(@"I click Continue on the country page")]
@@ -51,25 +53,20 @@ namespace PlantHealth.StepDefinitions
         [Then(@"I am taken to the format selection page")]
         public void ThenIAmTakenToTheFormatSelectionPage()
         {
-            throw new PendingStepException();
-        }
-
-        [When(@"I enter the country name in the search box")]
-        public void WhenIEnterTheCountryNameInTheSearchBox()
-        {
-            throw new PendingStepException();
-        }
+            _formatSelectionPage.IsFormatPageDisplayed();
+        }      
 
         [Then(@"I see the no results displayed")]
         public void ThenISeeTheNoResultsDisplayed()
         {
-            throw new PendingStepException();
+            Assert.IsTrue(_countryPage.IsDisplayedNoresults(),"No reults component is not displayed");
         }
 
-        [Given(@"I click Continue on the country page")]
-        public void GivenIClickContinueOnTheCountryPage()
+        [Then(@"I should see the error page to enter the country")]
+        public void ThenIShouldSeeTheErrorPageToEnterTheCountry()
         {
-            throw new PendingStepException();
+            _errorPage.IsErrorPageEntertheNameOfCountry();
         }
+
     }
- }
+}

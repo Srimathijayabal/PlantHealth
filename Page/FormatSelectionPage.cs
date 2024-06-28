@@ -34,36 +34,7 @@ namespace PlantHealth.Page
             return formatSelectionHeading.Displayed;
         }
 
-        [Given(@"I am on the Format selection page")]
-        public void GivenIAmOnTheFormatSelectionPage()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"I select a Plants for planting")]
-        public void WhenISelectAPlantsForPlanting()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"I click Continue")]
-        public void WhenIClickContinue()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"I am taken to the plant detail page")]
-        public void ThenIAmTakenToThePlantDetailPage()
-        {
-            throw new PendingStepException();
-        }
-
-        [Given(@"I click Continue")]
-        public void GivenIClickContinue()
-        {
-            throw new PendingStepException();
-        }
-
+        
 
 
     }
