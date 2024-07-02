@@ -12,45 +12,46 @@ namespace PlantHealth.StepDefinitions
     [Binding]
     public sealed class FormatSelectionStepDefintion
     {
-        public string countryPage = URLs.CountryPage;
+        public string FormatPage = URLs.FormatPage;
         private IWebDriver driver;
-        private CountryPage _countryPage;
         private ErrorPage _errorPage;
+        private FormatSelectionPage _formatSelectionPage;
+        private string _selectedFormat;
 
-        public FormatSelectionStepDefintion(IWebDriver driver, ErrorPage errorPage,CountryPage countryPage)
+        public FormatSelectionStepDefintion(IWebDriver driver, ErrorPage errorPage,FormatSelectionPage formatSelectionPage)
         {
             this.driver = driver;            
             _errorPage = errorPage;
-            _countryPage = countryPage; 
+             _formatSelectionPage  = formatSelectionPage; 
         }
 
+        [Given(@"I am on the Format selection page")]
         public void GivenIAmOnTheFormatSelectionPage()
         {
-            throw new PendingStepException();
+            driver.Url = FormatPage;
         }
 
-        [When(@"I select a Plants for planting")]
-        public void WhenISelectAPlantsForPlanting()
+
+        [When(@"I select a format ""([^""]*)""")]
+        public void WhenISelectAFormat(string p0)
         {
-            throw new PendingStepException();
+            _selectedFormat = p0;
+            _formatSelectionPage.clickRadio(p0);
         }
 
         [When(@"I click Continue")]
         public void WhenIClickContinue()
         {
-            throw new PendingStepException();
+            _formatSelectionPage.clickContinue();
         }
 
         [Then(@"I am taken to the plant detail page")]
         public void ThenIAmTakenToThePlantDetailPage()
         {
-            throw new PendingStepException();
+           string plantDetailPageUrl = driver.Url;
+            plantDetailPageUrl.Contains(_selectedFormat);
         }
+       
 
-        [Given(@"I click Continue")]
-        public void GivenIClickContinue()
-        {
-            throw new PendingStepException();
-        }
     }
- }
+}

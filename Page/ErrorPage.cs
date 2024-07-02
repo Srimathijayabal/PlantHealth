@@ -25,7 +25,9 @@ namespace PlantHealth.Page
         private IWebElement errorHeadingEnterThePlantName => driver.FindElement(By.XPath("//h2[@class='govuk-error-summary__title' and contains(text(),'There is a problem')]"));
 
         private IWebElement errorHeadingEnterTheCountry => driver.FindElement(By.XPath("//a[contains(text(),'Enter the name of the country you are importing')]"));
+        private IWebElement errorHeadingFormatPage => driver.FindElement(By.XPath("//h2[@class='govuk-error-summary__title']"));
 
+        
         public bool IsErrorPageWhatyouwanttoFindOutDisplayed()
         {
             return errorHeadingSelectWhatyouwanttoFindOut.Displayed;
@@ -44,6 +46,11 @@ namespace PlantHealth.Page
         public bool IsErrorPageEntertheNameOfCountry()
         {
             return errorHeadingEnterTheCountry.Displayed;
+        }
+
+        public bool IsErrorPageSelectFormat()
+        {
+            return errorHeadingFormatPage.Displayed;
         }
     }
 }

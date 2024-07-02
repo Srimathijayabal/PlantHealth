@@ -6,7 +6,7 @@ Country search page allowing the use to enter a valid country from the list of c
 Scenario Outline: Select Country from the list and navigate to format page
 	
 	Given I am on the Format selection page 
-	When I select a <plantFormat>
+	When I select a format "<plantFormat>"
 	And I click Continue 
 	Then I am taken to the plant detail page
 
@@ -23,5 +23,5 @@ Examples:
 	Scenario: Validating the error page when no data selected
 
     Given I am on the Format selection page 
-    And  I click Continue 
+    When  I click Continue 
     Then I should see the error page to enter the details
