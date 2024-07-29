@@ -1,7 +1,7 @@
 ﻿using ExcelDataReader;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using PlantHealth.Support;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -116,7 +116,7 @@ namespace PlantHealth.Page
             {
                 string excelLatinName = row["Column0"].ToString(); // Get the Latin name from the Excel row
 
-                foreach (var plantDetail in jsonData.plant_detail) // Loop through each plant detail in the JSON data
+                foreach (var plantDetail in jsonData.plantName) // Loop through each plant detail in the JSON data
                 {
                     foreach (var result in plantDetail.results) // Loop through each result in the plant detail
                     {
