@@ -118,7 +118,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am on the Format selection page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When(string.Format("I select a {0}", plantFormat), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select a format \"{0}\"", plantFormat), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.And("I click Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -163,7 +163,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("I am on the Format selection page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 26
-    testRunner.And("I click Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I click Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
     testRunner.Then("I should see the error page to enter the details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

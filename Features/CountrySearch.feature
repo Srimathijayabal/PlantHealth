@@ -1,26 +1,33 @@
 ﻿Feature: CountrySearch
 
 Country search page allowing the use to enter a valid country from the list of countries shown and proceed to format selection
+Background:
+	Given I am logged in as a user
 
 @countrySearch
-Scenario: Select Country from the list and navigate to format page
+Scenario Outline: Select Country from the list and navigate to format page
 	
 	Given I am on the Country search page 
-	When I enter the country name "India" in the search box
-	And I select an matching entry "India" from the drop down
+	When I search for a country "<searchText>"
+	And I select a country from the list "<searchText>"
 	And I click Continue on the country page
 	Then I am taken to the format selection page
+
+    Examples:
+      | searchText |
+      | India      |
+      | China      |
 
 @countrySearch
 Scenario: Invalid search and verify no results component 
 
 	Given I am on the Country search page 
-	When I enter the country name "xyzz" in the search box
+	When I search for a country "xyz"
 	Then I see the no results displayed
 
 @countrySearch
 	Scenario: Validating the error page when no data selected
 
     Given  I am on the Country search page 
-    And I click Continue on the country page
-    Then I should see the error page to enter the details
+    When I click Continue on the country page
+    Then I should see the error page to enter the country

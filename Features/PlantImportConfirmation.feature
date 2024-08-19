@@ -2,6 +2,9 @@
 
 Plant import confirmation page with options allowing the user to select the journey
 
+Background:
+	Given I am logged in as a user
+
 @journeyConfirmation
 Scenario: Select GB option
 	Given I see two options

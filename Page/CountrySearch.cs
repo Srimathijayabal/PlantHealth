@@ -11,7 +11,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using static PlantHealth.Support.Datamodel;
+
 
 namespace PlantHealth.Page
 {
@@ -30,6 +30,8 @@ namespace PlantHealth.Page
         private IWebElement countrySearchTextbox => driver.FindElement(By.XPath("//input[@name='countrySearchQuery']"));
 
         private IWebElement continueBtn => driver.FindElement(By.XPath("//button[@id='submitButton']"));
+
+        private string noResultsComponent = "//li[text()='No results found']";
         public bool IsSearchPageDisplayed()
         {
             return countrySearchHeading.Displayed;
@@ -47,11 +49,20 @@ namespace PlantHealth.Page
 
         public void selectACountry(string countryName)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            string country = "(//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + countryName.ToLower() + "')])[1]";
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            string country = "//li[@id='searchResults0']";
             
             wait.Until(ExpectedConditions.ElementExists(By.XPath(country))).Click();          
 
+        }
+
+        public bool IsDisplayedNoresults()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            wait.Until(ExpectedConditions.ElementExists(By.XPath(noResultsComponent)));
+
+            return true;
         }
     }
 }

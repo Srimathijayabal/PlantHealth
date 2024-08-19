@@ -16,24 +16,24 @@ using TechTalk.SpecFlow;
 
 namespace PlantHealth.Page
 {
-    public class FormatSelectionPage
+    public class PlantDetailsPage
     {
 
         private IWebDriver driver;
-        public FormatSelectionPage(IWebDriver driver)
+        public PlantDetailsPage(IWebDriver driver)
         {
             this.driver = driver;
         }
 
         private IWebElement formatSelectionHeading => driver.FindElement(By.XPath("//h1[@class='govuk-fieldset__heading']"));
 
-        private IWebElement continueBtn => driver.FindElement(By.XPath("//button[@type='submit']"));
+        private IWebElement continueBtn => driver.FindElement(By.XPath("//button[@id='submitButton']"));
 
-        private IWebElement pforp => driver.FindElement(By.XPath("//input[@value = 'plants for planting']"));
-        private IWebElement pofp => driver.FindElement(By.XPath("//input[@value = 'parts of a plant']"));
-        private IWebElement produce => driver.FindElement(By.XPath("//input[@value = 'produce']"));
-        private IWebElement wood => driver.FindElement(By.XPath("//input[@value = 'wood']"));
-        private IWebElement bark => driver.FindElement(By.XPath("//input[@value = 'isolated bark']"));
+        private IWebElement pforp => driver.FindElement(By.XPath("//input[@value='plants for planting']"));
+        private IWebElement pofp => driver.FindElement(By.XPath("//input[@value='parts of a plant']"));
+        private IWebElement produce => driver.FindElement(By.XPath("//input[@value='produce']"));
+        private IWebElement wood => driver.FindElement(By.XPath("//input[@value='wood']"));
+        private IWebElement bark => driver.FindElement(By.XPath("//input[@value='isolated bark']"));
 
 
         public bool IsFormatPageDisplayed()

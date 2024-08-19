@@ -2,26 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using PlantHealth.Config;
 using PlantHealth.Page;
-using PlantHealth.Support;
+using RestSharp;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
 
 namespace PlantHealth.StepDefinitions
 {
     [Binding]
-    public class PlantSearchAPIStepDefinition
+    public class CompareAPIreposnsewithExcelStepDifinition
     {
         private readonly ISpecFlowOutputHelper _outputHelper;
         private readonly DataComparer _dataComparer;
         private Dictionary<string, string> _parameters;
         private DataSet _excelData;
-        private Datamodel _apiResponse;
+        private DataModel _apiResponse;
 
-        public PlantSearchAPIStepDefinition(ISpecFlowOutputHelper outputHelper)
+       
+
+
+        
+        public CompareAPIreposnsewithExcelStepDifinition(ISpecFlowOutputHelper outputHelper)
         {
             _outputHelper = outputHelper;
             _dataComparer = new DataComparer(_outputHelper);
+        
         }
 
         [Given(@"I have the following search parameter")]
@@ -54,5 +60,7 @@ namespace PlantHealth.StepDefinitions
         {
             _dataComparer.compareData(_excelData.Tables[0], _apiResponse);
         }
+
+       
     }
 }

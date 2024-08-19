@@ -9,7 +9,7 @@ using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
 using System.Data;
 using TechTalk.SpecFlow.Infrastructure;
-using PlantHealth.Support;
+
 
 namespace PlantHealth.StepDefinitions
 {
@@ -122,7 +122,7 @@ namespace PlantHealth.StepDefinitions
         };
 
             // Fetch the JSON data from the API
-            Datamodel jsonData = await _dataComparer.FetchJsonFromApi(url, parameters);
+            DataModel jsonData = await _dataComparer.FetchJsonFromApi(url, parameters);
 
             // Compare data (example: print matching records)
             _dataComparer.compareData(excelData.Tables[0], jsonData);

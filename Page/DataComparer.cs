@@ -1,7 +1,7 @@
 ﻿using ExcelDataReader;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using PlantHealth.Support;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -74,7 +74,7 @@ namespace PlantHealth.Page
             }
         }
 
-        public async Task<Datamodel> FetchJsonFromApi(string url, Dictionary<string, string> parameters)
+        public async Task<DataModel> FetchJsonFromApi(string url, Dictionary<string, string> parameters)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -92,7 +92,7 @@ namespace PlantHealth.Page
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 // Deserialize the JSON response
-                var data = JsonConvert.DeserializeObject<Datamodel>(responseString);
+                var data = JsonConvert.DeserializeObject<DataModel>(responseString);
 
                 _outputHelper.WriteLine(data.ToString());
 
@@ -103,7 +103,7 @@ namespace PlantHealth.Page
 
 
         // Method to compare data from a DataTable with data from a JSON API
-        public void compareData(DataTable dataTable, Datamodel jsonData)
+        public void compareData(DataTable dataTable, DataModel jsonData)
         {
             _outputHelper.WriteLine("Columns in DataTable");
 
