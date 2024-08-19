@@ -1,5 +1,8 @@
 ﻿Feature: Start Page
 
+Background:
+	Given I am logged in as a user
+
 @StartPage
 Scenario: Startnow CTA 
 	Given I launch the URL

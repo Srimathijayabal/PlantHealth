@@ -3,6 +3,9 @@
   I want to search for plants
   So that I can see a list of search results matching my search text
  
+ Background:
+	Given I am logged in as a user
+
   Scenario Outline: Validating the plant search results for different search texts
     Given I am on the plant search page
     When I search for "<searchText>"

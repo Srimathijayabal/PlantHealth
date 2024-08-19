@@ -8,6 +8,7 @@ namespace PlantHealth.Config
 {
     public static class URLs
     {
+        public const string loginPageURL = "https://phi-frontend.test.cdp-int.defra.cloud/";
         public const string StartPageURL = "https://phi-frontend.test.cdp-int.defra.cloud";
         public const string PurposePage = StartPageURL + "/plant-health";
         public const string PlantImportPage = PurposePage + "/purpose-of-visit?whatdoyouwanttofind=importrules";

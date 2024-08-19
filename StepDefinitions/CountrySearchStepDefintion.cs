@@ -17,13 +17,15 @@ namespace PlantHealth.StepDefinitions
         private CountryPage _countryPage;
         private ErrorPage _errorPage;
         private FormatSelectionPage _formatSelectionPage;
+        private readonly ScenarioContext _scenarioContext;
 
-        public CountrySearchStepDefinition(IWebDriver driver, ErrorPage errorPage,CountryPage countryPage,FormatSelectionPage formatSelection)
+        public CountrySearchStepDefinition(IWebDriver driver, ErrorPage errorPage,CountryPage countryPage,FormatSelectionPage formatSelection,ScenarioContext scenarioContext)
         {
             this.driver = driver;            
             _errorPage = errorPage;
             _countryPage = countryPage; 
             _formatSelectionPage = formatSelection;
+            _scenarioContext = scenarioContext;
         }
 
         [Given(@"I am on the Country search page")]
@@ -36,6 +38,7 @@ namespace PlantHealth.StepDefinitions
         public void WhenISearchForACountry(string countryName)
         {
             _countryPage.enterCountryName(countryName);
+
         }
 
         [When(@"I select a country from the list ""([^""]*)""")]
@@ -60,6 +63,7 @@ namespace PlantHealth.StepDefinitions
         public void ThenISeeTheNoResultsDisplayed()
         {
             Assert.IsTrue(_countryPage.IsDisplayedNoresults(),"No reults component is not displayed");
+
         }
 
         [Then(@"I should see the error page to enter the country")]

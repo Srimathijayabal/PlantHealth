@@ -1,6 +1,8 @@
 ﻿Feature: CountrySearch
 
 Country search page allowing the use to enter a valid country from the list of countries shown and proceed to format selection
+Background:
+	Given I am logged in as a user
 
 @countrySearch
 Scenario Outline: Select Country from the list and navigate to format page

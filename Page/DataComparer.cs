@@ -74,7 +74,7 @@ namespace PlantHealth.Page
             }
         }
 
-        public async Task<Datamodel> FetchJsonFromApi(string url, Dictionary<string, string> parameters)
+        public async Task<DataModel> FetchJsonFromApi(string url, Dictionary<string, string> parameters)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -92,7 +92,7 @@ namespace PlantHealth.Page
                 var responseString = await response.Content.ReadAsStringAsync();
 
                 // Deserialize the JSON response
-                var data = JsonConvert.DeserializeObject<Datamodel>(responseString);
+                var data = JsonConvert.DeserializeObject<DataModel>(responseString);
 
                 _outputHelper.WriteLine(data.ToString());
 
@@ -103,7 +103,7 @@ namespace PlantHealth.Page
 
 
         // Method to compare data from a DataTable with data from a JSON API
-        public void compareData(DataTable dataTable, Datamodel jsonData)
+        public void compareData(DataTable dataTable, DataModel jsonData)
         {
             _outputHelper.WriteLine("Columns in DataTable");
 
@@ -116,7 +116,7 @@ namespace PlantHealth.Page
             {
                 string excelLatinName = row["Column0"].ToString(); // Get the Latin name from the Excel row
 
-                foreach (var plantDetail in jsonData.plantName) // Loop through each plant detail in the JSON data
+                foreach (var plantDetail in jsonData.plant_detail) // Loop through each plant detail in the JSON data
                 {
                     foreach (var result in plantDetail.results) // Loop through each result in the plant detail
                     {
